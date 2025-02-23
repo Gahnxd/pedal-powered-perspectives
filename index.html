@@ -5,11 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedal-Powered Perspectives</title>
+
+    <link rel="stylesheet" href="global.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="map.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="map.js" defer></script>
 </head>
 
 <body>
-    <h1>Pedal-Powered Perspectives</h1>
+    <header>
+        <h1>🚴🏼‍♀️Pedal-Powered Perspectives</h1>
+        <label>
+            Filter by time:
+            <input type="range" id="time-slider" min="-1" max="1440" value="-1">
+            <em id="any-time">(any time)</em>
+            <time id="selected-time">11:59 PM</time>
+        </label>
+    </header>
 
+    <div id="map">
+        <svg></svg>
+    </div>
+
+    <div class="legend">
+        <span>LEGEND:</span>
+        <div>
+            <div class="swatch more-departures"></div> More departures
+        </div>
+        <div>
+            <div class="swatch balanced"></div> Balanced
+        </div>
+        <div>
+            <div class="swatch more-arrivals"></div> More arrivals
+        </div>
+    </div>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 </body>
 
 </html>

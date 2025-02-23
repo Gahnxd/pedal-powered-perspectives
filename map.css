@@ -1,0 +1,117 @@
+:root {
+    --color-departures: #0073e6;
+    --color-arrivals: darkorange;
+}
+
+html, body {
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+}
+     
+#map {
+    width: 100%;    /* Adjust width to your desired size */
+    height: 100%;   /* Adjust height to your desired size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+#map svg {
+    /* background: yellow; */
+    /* opacity: 50%; */
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+circle {
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+    
+    fill: var(--color);  /* Use a blue color for visibility */
+    fill-opacity: 0.6;  /* Reduce opacity to allow overlapping visibility */
+    stroke: white;  /* Add a white stroke for contrast */
+    stroke-width: 1px;  /* Keep a thin stroke */
+    pointer-events: auto; /* Allow tooltips to show on hover */
+}
+
+header {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 97%;
+    padding: 1em;
+}
+
+label {
+    margin-left: auto;
+}
+
+input[type="range"] {
+    width: 30em; /* Adjust slider width */
+}
+
+time, em {
+    display: block;
+    text-align: right;
+}
+
+em {
+    display: block;
+    color: gray;
+    font-style: italic;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 15px;  /* Space between items */
+    position: absolute;
+    bottom: 15px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.legend > span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.legend > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.more-departures {
+    background: var(--color-departures);
+}
+
+.balanced {
+    background: color-mix(in oklch, var(--color-departures) calc(100% * 0.5), var(--color-arrivals));
+}
+
+.more-arrivals {
+    background: var(--color-arrivals);
+}
